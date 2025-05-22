@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% block content %}
+<div class="form-container">
+  <h2>Health Blog</h2>
+  {% for category, posts in category_posts.items %}
+    <h3>{{ category }}</h3>
+    {% for post in posts %}
+      <div class="dashboard">
+        <h4>{{ post.title }}</h4>
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        <p>{{ post.truncated_summary }}</p>
+        <hr>
+      </div>
+    {% empty %}
+      <p>No posts in this category.</p>
+    {% endfor %}
+  {% endfor %}
+</div>
+{% endblock %}

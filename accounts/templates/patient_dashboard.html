@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<header>
+    <h1>Welcome, {{ user.first_name }} {{ user.last_name }}!</h1>
+</header>
+
+<div class="form-container dashboard">
+
+    <!-- Profile Section -->
+    <h2>Your Details</h2>
+    {% if user.profile_picture %}
+        <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+    {% endif %}
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Address:</strong> {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+    <p><strong>User Type:</strong> {{ user.user_type }}</p>
+
+    <hr style="margin: 30px 0;">
+
+    <!-- Blog Section -->
+    <h2>Health Blogs</h2>
+    {% if categories %}
+        {% for category, posts in categories.items %}
+            <h3>{{ category }}</h3>
+            <ul>
+                {% for post in posts %}
+                    <li>
+                        <strong>{{ post.title }}</strong><br>
+                        {{ post.summary|truncatewords:15 }}<br>
+                        <a href="{% url 'blog_detail' post.id %}">Read More</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>No blog posts available.</p>
+    {% endif %}
+
+</div>
+</body>
+</html>
