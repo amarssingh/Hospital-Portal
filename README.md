@@ -80,7 +80,6 @@ hospital-portal/
 ├── accounts/          
 ├── blog/              
 ├── templates/
-├── static/            
 ├── hospital_portal/  
 ├── manage.py
 └── README.md
