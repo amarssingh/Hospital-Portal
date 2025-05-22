@@ -1,0 +1,19 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% block content %}
+<div class="form-container">
+  <h2>My Blog Posts</h2>
+  {% for post in posts %}
+    <div class="dashboard">
+      <h3>{{ post.title }}</h3>
+      <img src="{{ post.image.url }}" alt="{{ post.title }}">
+      <p><strong>Category:</strong> {{ post.category }}</p>
+      <p>{{ post.truncated_summary }}</p>
+      <p><strong>Status:</strong> {% if post.is_draft %}Draft{% else %}Published{% endif %}</p>
+      <hr>
+    </div>
+  {% empty %}
+    <p>No posts yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

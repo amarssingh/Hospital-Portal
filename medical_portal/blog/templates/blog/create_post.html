@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% block content %}
+<div class="form-container">
+  <h2>Create Blog Post</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Publish Post">
+  </form>
+  <a href="{% url 'doctor_dashboard' %}" class="button back-button">Back to Dashboard</a>
+
+</div>
+{% endblock %}
