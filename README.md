@@ -74,6 +74,7 @@ python manage.py runserver
 
 ## Folder Structure
 
+```bash
 hospital-portal/
 │
 ├── accounts/          
@@ -83,3 +84,4 @@ hospital-portal/
 ├── hospital_portal/  
 ├── manage.py
 └── README.md
+```
